@@ -1,0 +1,9 @@
+[book]
+authors = ["toyboot4e"]
+language = "ja"
+multilingual = false
+src = "src"
+title = "AtCoder in Haskell"
+
+[output.html]
+mathjax-support = true
