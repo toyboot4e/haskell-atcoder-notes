@@ -6,4 +6,5 @@ src = "src"
 title = "AtCoder in Haskell"
 
 [output.html]
+default-theme = "rust"
 mathjax-support = true
