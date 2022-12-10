@@ -160,7 +160,7 @@
 <h2 id="プロジェクト毎の-ghc-のバージョン切り替え"><a class="header" href="#プロジェクト毎の-ghc-のバージョン切り替え">プロジェクト毎の GHC のバージョン切り替え</a></h2>
 <p>僕は <code>stack.yaml</code> で <code>system-ghc: true</code> (後述) を設定し、 <a href="https://direnv.net/">direnv</a> で <code>PATH</code> を書き換えて GHC / HLS のバージョンを切り替えています。間に合わせとしては十分なのではないでしょうか……。</p>
 <h2 id="stackyaml"><a class="header" href="#stackyaml"><code>stack.yaml</code></a></h2>
-<p>Stack にはプロジェクト下の <code>.stack-work/</code> に GHC をインストールする機能がありますが、プロジェクトの数だけ GHC がインストールされるのは無駄です。 <code>PATH</code> 中の GHC を使用するように <code>system-ghc: true</code> を設定しています。また AtCoder で使用されるパッケージを利用できるように設定します:</p>
+<p>Stack にはプロジェクト下の <code>.stack-work/</code> に GHC をインストールする機能がありますが、プロジェクトの数だけ GHC がインストールされるのは無駄です。 <code>PATH</code> 中の GHC を使用するように <code>system-ghc: true</code> を設定しています。また AtCoder で使用されるパッケージのバージョンを設定します:</p>
 <pre><code class="language-yaml">system-ghc: true
 resolver: lts-16.11
 packages:
@@ -172,7 +172,7 @@ extra-deps:
 <p>主なパッケージは <a href="https://www.stackage.org/lts-16.11">lts-16.11</a> に含まれますが、 <code>repa-3.4.1.4</code> のみ例外です。</p>
 </blockquote>
 <h2 id="packageyaml"><a class="header" href="#packageyaml"><code>package.yaml</code></a></h2>
-<p>パッケージ、 (HLS で使用される) 警告のレベル、実行ファイルなどを設定します:</p>
+<p>使用パッケージ、 (HLS で使用される) 警告のレベル、実行ファイルなどを設定します:</p>
 <details>
 <summary><code>package.yaml</code></summary>
 <pre><code class="language-yaml">dependencies:
@@ -268,7 +268,7 @@ executables:
     main:                Main.hs
 </code></pre>
 </details>
-<p><code>executables</code> を省くと HLS 動作が不安定になった (動いたり動かなかったりする) ため、書くようにしています。</p>
+<p><code>executables</code> を省くと HLS の動作が不安定になった (動いたり動かなかったりする) ため、省かず書くことにしています。</p>
 <h2 id="hieyaml"><a class="header" href="#hieyaml"><code>hie.yaml</code></a></h2>
 <p><code>package.yaml</code> を書いた後、 <code>gen-hie</code> (<a href="https://github.com/Avi-D-coder/implicit-hie#readme">implicit-hie</a>) を使って <code>hie.yaml</code> を生成します。これが無いと HLS が正常に動きませんでした:</p>
 <pre><code class="language-sh">$ gen-hie &gt; hie.yaml
@@ -324,7 +324,9 @@ executables:
 -- 関数など
 </code></pre>
 <p><code>Main.hs</code> を <a href="https://zenn.dev/mod_poppo/articles/haskell-script">cabel script / stack script</a> にすると、実行ファイルとして扱うことができます。環境構築が楽な反面、 stack script の実行速度は <code>oj</code> によると 1 秒を超えるため、実行時間の正確な見積もりができなくなるのが欠点です。</p>
+<blockquote>
 <p><code>stack</code> でビルド・実行する環境を作った方が良いとは思うのですが……</p>
+</blockquote>
 <h3 id="stack-script-の関数を-repl-から呼ぶ"><a class="header" href="#stack-script-の関数を-repl-から呼ぶ">Stack script の関数を REPL から呼ぶ</a></h3>
 <p>デバッグのため、 <code>Main.hs</code> の関数を REPL から動作確認したい場合があります。</p>
 <p><code>ghci</code> から <code>:load</code> するとコメントが無視されるため、 Stackage のパッケージの <code>import</code> に失敗します。代わりに <code>stack repl &lt;file&gt;</code> で stack script をロードできます:</p>

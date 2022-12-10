@@ -142,14 +142,14 @@
 <p>1 年後には充実した内容になっている……はず！</p>
 <blockquote>
 <p>内容は誤りを含むと思います 🙇</p>
-<p>特にアルゴリズムの実装は <strong>著しく低クオリティ</strong> かもしれません。お気をつけください。</p>
+<p>特にアルゴリズムの実装は <strong>著しく質が低い</strong> かもしれません。お気をつけください。</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="書籍"><a class="header" href="#書籍">書籍</a></h1>
 <p>良かった本の感想を述べます。</p>
 <h2 id="すごいhaskellたのしく学ぼう"><a class="header" href="#すごいhaskellたのしく学ぼう"><a href="https://shop.ohmsha.co.jp/shopdetail/000000001926">すごいHaskellたのしく学ぼう！</a></a></h2>
-<p>文法を習得できました。『すごい H 本』は『最も簡単』と言われますが、 <code>Applicative</code> などは十分難しいと思います。じっくりと、あるいは飛ばしながら読みました。</p>
+<p>いわゆる『すごい H 本』です。文法を吸収できました。この本は『最も簡単』と言われますが、 <code>Applicative</code> などは十分難しいと思います。じっくりと、あるいは飛ばしながら読みました。</p>
 <blockquote>
-<p>似た位置の入門書としては <a href="https://www.lambdanote.com/products/haskell">プログラミング Haskell 第2版</a> もあります。こちらも好評です。</p>
+<p>似た本の <a href="https://www.lambdanote.com/products/haskell">プログラミング Haskell 第2版</a> も好評です。</p>
 </blockquote>
 <p>読後は <a href="https://atcoder.jp/contests/abs">AtCoder Beginners Selection</a> が解けるようになりました。 ABC (AtCoder Beginner Contest) にも参加していきます。</p>
 <h2 id="電子版単体haskellで戦う競技プログラミング-第2版"><a class="header" href="#電子版単体haskellで戦う競技プログラミング-第2版"><a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a></a></h2>
@@ -181,7 +181,7 @@
 </li>
 <li>
 <p><a href="https://scrapbox.io/magurofly/AtCoder%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%80%81%E5%85%A5%E3%82%8C%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%A8%E3%81%84%E3%81%84%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AA%E3%81%A9">AtCoderをするとき、入れておくといい拡張機能など</a><br />
-問題・ユーザに推定難度・レートに応じた色が付くスクリプトなどがあります。</p>
+問題／ユーザに推定難度／レートに応じた色が付くスクリプトなどがあります。</p>
 </li>
 </ul>
 <h2 id="haskell-のバージョンについて"><a class="header" href="#haskell-のバージョンについて">Haskell のバージョンについて</a></h2>
@@ -244,7 +244,7 @@ $ ghcup install hls 1.5.1
 <h2 id="プロジェクト毎の-ghc-のバージョン切り替え"><a class="header" href="#プロジェクト毎の-ghc-のバージョン切り替え">プロジェクト毎の GHC のバージョン切り替え</a></h2>
 <p>僕は <code>stack.yaml</code> で <code>system-ghc: true</code> (後述) を設定し、 <a href="https://direnv.net/">direnv</a> で <code>PATH</code> を書き換えて GHC / HLS のバージョンを切り替えています。間に合わせとしては十分なのではないでしょうか……。</p>
 <h2 id="stackyaml"><a class="header" href="#stackyaml"><code>stack.yaml</code></a></h2>
-<p>Stack にはプロジェクト下の <code>.stack-work/</code> に GHC をインストールする機能がありますが、プロジェクトの数だけ GHC がインストールされるのは無駄です。 <code>PATH</code> 中の GHC を使用するように <code>system-ghc: true</code> を設定しています。また AtCoder で使用されるパッケージを利用できるように設定します:</p>
+<p>Stack にはプロジェクト下の <code>.stack-work/</code> に GHC をインストールする機能がありますが、プロジェクトの数だけ GHC がインストールされるのは無駄です。 <code>PATH</code> 中の GHC を使用するように <code>system-ghc: true</code> を設定しています。また AtCoder で使用されるパッケージのバージョンを設定します:</p>
 <pre><code class="language-yaml">system-ghc: true
 resolver: lts-16.11
 packages:
@@ -256,7 +256,7 @@ extra-deps:
 <p>主なパッケージは <a href="https://www.stackage.org/lts-16.11">lts-16.11</a> に含まれますが、 <code>repa-3.4.1.4</code> のみ例外です。</p>
 </blockquote>
 <h2 id="packageyaml"><a class="header" href="#packageyaml"><code>package.yaml</code></a></h2>
-<p>パッケージ、 (HLS で使用される) 警告のレベル、実行ファイルなどを設定します:</p>
+<p>使用パッケージ、 (HLS で使用される) 警告のレベル、実行ファイルなどを設定します:</p>
 <details>
 <summary><code>package.yaml</code></summary>
 <pre><code class="language-yaml">dependencies:
@@ -352,7 +352,7 @@ executables:
     main:                Main.hs
 </code></pre>
 </details>
-<p><code>executables</code> を省くと HLS 動作が不安定になった (動いたり動かなかったりする) ため、書くようにしています。</p>
+<p><code>executables</code> を省くと HLS の動作が不安定になった (動いたり動かなかったりする) ため、省かず書くことにしています。</p>
 <h2 id="hieyaml"><a class="header" href="#hieyaml"><code>hie.yaml</code></a></h2>
 <p><code>package.yaml</code> を書いた後、 <code>gen-hie</code> (<a href="https://github.com/Avi-D-coder/implicit-hie#readme">implicit-hie</a>) を使って <code>hie.yaml</code> を生成します。これが無いと HLS が正常に動きませんでした:</p>
 <pre><code class="language-sh">$ gen-hie &gt; hie.yaml
@@ -408,7 +408,9 @@ executables:
 -- 関数など
 </code></pre>
 <p><code>Main.hs</code> を <a href="https://zenn.dev/mod_poppo/articles/haskell-script">cabel script / stack script</a> にすると、実行ファイルとして扱うことができます。環境構築が楽な反面、 stack script の実行速度は <code>oj</code> によると 1 秒を超えるため、実行時間の正確な見積もりができなくなるのが欠点です。</p>
+<blockquote>
 <p><code>stack</code> でビルド・実行する環境を作った方が良いとは思うのですが……</p>
+</blockquote>
 <h3 id="stack-script-の関数を-repl-から呼ぶ"><a class="header" href="#stack-script-の関数を-repl-から呼ぶ">Stack script の関数を REPL から呼ぶ</a></h3>
 <p>デバッグのため、 <code>Main.hs</code> の関数を REPL から動作確認したい場合があります。</p>
 <p><code>ghci</code> から <code>:load</code> するとコメントが無視されるため、 Stackage のパッケージの <code>import</code> に失敗します。代わりに <code>stack repl &lt;file&gt;</code> で stack script をロードできます:</p>
@@ -583,8 +585,8 @@ array (1,3) [(1,-1),(2,3),(3,5)]
 <p>不変配列なら <code>V.Vector (VU.Vector a)</code> が使えます。たまーに入力の処理で役立ちます。</p>
 <p>可変配列なら <code>Array</code> を使います。</p>
 <h3 id="タプルに対する実装"><a class="header" href="#タプルに対する実装">タプルに対する実装</a></h3>
-<p>なんと内部実装としては 2 本の配列に切り替わります。</p>
-<p>TODO: Struct of Arrays, データ族？</p>
+<p>なんと <code>Vector (Int, Int)</code> の内部実装は 2 本の配列です。</p>
+<p>TODO: データ族？</p>
 <h3 id="resizable-な-mvector"><a class="header" href="#resizable-な-mvector">Resizable な <code>MVector</code></a></h3>
 <p>TODO: 実装例へのリンク？</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vector-algorithms"><a class="header" href="#vector-algorithms">vector-algorithms</a></h1>
@@ -606,8 +608,7 @@ array (1,3) [(1,-1),(2,3),(3,5)]
 <div style="break-before: page; page-break-before: always;"></div><h1 id="primitive"><a class="header" href="#primitive">primitive</a></h1>
 <p><code>primitive</code> パッケージの <code>PrimMonad</code> は、 <code>IO</code> および <code>ST</code> を抽象します。 <code>vector</code> の API ドキュメントを読む時などに役立ちます。</p>
 <p>詳しくは <a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a> 第 4 章を参照してください。</p>
-<h2 id="todo-使用例"><a class="header" href="#todo-使用例">TODO: 使用例</a></h2>
-<p>Union-Find 木を Find 木に固めてしまう？</p>
+<h2 id="todo-vector-のソースを読む"><a class="header" href="#todo-vector-のソースを読む">TODO: Vector のソースを読む？</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="text"><a class="header" href="#text">text</a></h1>
 <p><code>text</code> は Unicode 文字 (?) が扱える文字列のパッケージです。競技プログラミングではあまり使う機会がありません。 <code>bytestring</code> が使えたら十分です。</p>
 <p>なお AtCoder のバージョンでは <code>text</code> の内部実装には UTF-16 が使われていますが、最近の実装では UTF-8 に移行したようです。 AtCoder の外では <code>text</code> の天下……なのかもしれません。</p>
@@ -639,8 +640,7 @@ array (1,3) [(1,-1),(2,3),(3,5)]
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="state"><a class="header" href="#state">State</a></h1>
 <h2 id="例-state-モナドで-mapaccuml"><a class="header" href="#例-state-モナドで-mapaccuml">例: <code>State</code> モナドで <code>mapAccumL</code></a></h2>
-<p>累積和の計算には <code>scanl</code>, <code>scanl1</code> を使うと思いますが、 <code>mapAccumL</code> も利用できます。</p>
-<p><code>mapAccumL</code> は状態を持った <code>map</code> 関数です:</p>
+<p><code>mapAccumL</code> は状態を持った <code>map</code> 関数です。累積和を計算してみます:</p>
 <pre><code class="language-hs">#!/usr/bin/env stack
 
 import Data.List
@@ -651,8 +651,13 @@ main = do
   -- [1, 2, 3] -&gt; (6, [1, 3, 6])
   print $ mapAccumL (\acc x -&gt; (acc + x, acc + x)) (0 :: Int) [1, 2, 3]
 
-  -- 累積和 → 数列もできる (`foldl'` では無理だと思います)
+  -- 累積和 → 数列
+  -- [1, 3, 6] -&gt; (6, [1, 2, 3])
+  print $ mapAccumL (\lastX x -&gt; (x, x - lastX)) (0 :: Int) [1, 3, 6]
 </code></pre>
+<blockquote>
+<p>累積和の計算には fold を使うことができます。しかし累積和を数列に戻す際には <code>mapAccumL</code> を使うしかないと思います。</p>
+</blockquote>
 <p>同様の計算は <code>mapM</code> と <code>State</code> モナドにより表現可能です:</p>
 <pre><code class="language-hs">#!/usr/bin/env stack
 
@@ -664,8 +669,12 @@ main = do
   -- 数列 → 累積和
   -- [1, 2, 3] -&gt; ([1, 3, 6], 6)
   print $ runState (mapM (\x -&gt; state $ \acc -&gt; (x + acc, x + acc)) [1, 2, 3]) (0 :: Int)
+
+  -- 累積和 → 数列
+  -- [1, 3, 6] -&gt; ([1, 2, 3], 0)
+  print $ runState (mapM (\x -&gt; state $ \lastX -&gt; (x - lastX, x)) [1, 2, 3]) (0 :: Int)
 </code></pre>
-<p><code>mapAccumL</code> は <code>Traversable</code> なデータ型にしか適用できませんが、<code>mapM</code> なら <code>Vector</code> にもあるので適用できます。</p>
+<p><code>mapAccumL</code> は <code>Traversable</code> なデータ型にしか適用できませんが、<code>mapM</code> なら <code>Vector</code> に対しても適用できます。</p>
 <!-- ```hs -->
 <!--   print $ runState (sequenceA $ map (\x -> state $ \acc -> (x + acc, x + acc)) [1, 2, 3]) (0 :: Int) -->
 <!--   print $ runState (traverse (\x -> state $ \acc -> (x + acc, x + acc)) [1, 2, 3]) (0 :: Int) -->
@@ -927,7 +936,7 @@ queryByRange (MSegmentTree !f !vec) (!lo, !hi) = fromJust &lt;$&gt; loop 0 (0, i
 <div style="break-before: page; page-break-before: always;"></div><h1 id="言語拡張について"><a class="header" href="#言語拡張について">言語拡張について</a></h1>
 <p>TODO: GHC の言語拡張とは</p>
 <h2 id="書き方"><a class="header" href="#書き方">書き方</a></h2>
-<p>フォーマッタ (<code>ormolu</code>) は言語拡張を 1 行ずつの分けてしまいます:</p>
+<p>フォーマッタ (<code>ormolu</code>) は言語拡張を 1 行ずつに分けてしまいますから、拡張の数だけ行を占領します:</p>
 <pre><code class="language-hs">{-# LANGUAGE BangPatterns #-}
 {-# BlockArguments #-}
 {-# LambdaCase #-}
@@ -936,7 +945,7 @@ queryByRange (MSegmentTree !f !vec) (!lo, !hi) = fromJust &lt;$&gt; loop 0 (0, i
 {-# TupleSections #-}
 -- ..
 </code></pre>
-<p>そこで言語拡張の宣言をフォーマッタの適用外にして、コード行数を削減できます:</p>
+<p>言語拡張の宣言をフォーマッタの適用外にすれば、コード行数を削減することもできます:</p>
 <pre><code class="language-hs">{- ORMOLU_DISABLE -}
 {-# LANGUAGE BangPatterns, BlockArguments, LambdaCase, MultiWayIf, PatternGuards, TupleSections #-}
 {-# LANGUAGE NumDecimals, NumericUnderscores #-}
@@ -946,7 +955,7 @@ queryByRange (MSegmentTree !f !vec) (!lo, !hi) = fromJust &lt;$&gt; loop 0 (0, i
 </code></pre>
 <h2 id="おすすめしない言語拡張"><a class="header" href="#おすすめしない言語拡張">おすすめしない言語拡張</a></h2>
 <h3 id="npluskpatterns"><a class="header" href="#npluskpatterns">NPlusKPatterns</a></h3>
-<p>パタンを <code>n + 1</code> のように書ける拡張です。この拡張を有効にして <code>ghci</code> を起動してみます:</p>
+<p>パタンを <code>n + 定数</code> と書けるようにする拡張です。この拡張を有効にして <code>ghci</code> を起動してみます:</p>
 <pre><code class="language-sh">$ ghci -XNPlusKPatterns
 Prelude&gt; 
 </code></pre>
@@ -965,7 +974,7 @@ Prelude&gt; n
 <p>参考: <a href="https://kazu-yamamoto.hatenablog.jp/entry/20110906/1315279311">カリー化談義 - あどけない話</a></p>
 <h2 id="多変数関数の表現として"><a class="header" href="#多変数関数の表現として">多変数関数の表現として</a></h2>
 <p>TODO: <a href="https://www.fos.kuis.kyoto-u.ac.jp/%7Eigarashi/CoPL/">プログラミング言語の基礎概念</a></p>
-<p>TODO: Applicative における <code>(a -&gt; b)</code> の具体例に <code>(a -&gt; b' -&gt; c)</code> がある。これもカリー化？</p>
+<p>TODO: Applicative における <code>(a -&gt; b)</code> の具体例に <code>(a -&gt; b' -&gt; c)</code> がある。</p>
 <h2 id="タプルの引数を個別の引数にバラすという意味で"><a class="header" href="#タプルの引数を個別の引数にバラすという意味で">タプルの引数を個別の引数にバラすという意味で</a></h2>
 <p>TODO: <code>curry</code>, <code>uncurry</code></p>
 <h2 id="部分適用について"><a class="header" href="#部分適用について">部分適用について</a></h2>

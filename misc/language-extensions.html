@@ -139,7 +139,7 @@
                         <h1 id="言語拡張について"><a class="header" href="#言語拡張について">言語拡張について</a></h1>
 <p>TODO: GHC の言語拡張とは</p>
 <h2 id="書き方"><a class="header" href="#書き方">書き方</a></h2>
-<p>フォーマッタ (<code>ormolu</code>) は言語拡張を 1 行ずつの分けてしまいます:</p>
+<p>フォーマッタ (<code>ormolu</code>) は言語拡張を 1 行ずつに分けてしまいますから、拡張の数だけ行を占領します:</p>
 <pre><code class="language-hs">{-# LANGUAGE BangPatterns #-}
 {-# BlockArguments #-}
 {-# LambdaCase #-}
@@ -148,7 +148,7 @@
 {-# TupleSections #-}
 -- ..
 </code></pre>
-<p>そこで言語拡張の宣言をフォーマッタの適用外にして、コード行数を削減できます:</p>
+<p>言語拡張の宣言をフォーマッタの適用外にすれば、コード行数を削減することもできます:</p>
 <pre><code class="language-hs">{- ORMOLU_DISABLE -}
 {-# LANGUAGE BangPatterns, BlockArguments, LambdaCase, MultiWayIf, PatternGuards, TupleSections #-}
 {-# LANGUAGE NumDecimals, NumericUnderscores #-}
@@ -158,7 +158,7 @@
 </code></pre>
 <h2 id="おすすめしない言語拡張"><a class="header" href="#おすすめしない言語拡張">おすすめしない言語拡張</a></h2>
 <h3 id="npluskpatterns"><a class="header" href="#npluskpatterns">NPlusKPatterns</a></h3>
-<p>パタンを <code>n + 1</code> のように書ける拡張です。この拡張を有効にして <code>ghci</code> を起動してみます:</p>
+<p>パタンを <code>n + 定数</code> と書けるようにする拡張です。この拡張を有効にして <code>ghci</code> を起動してみます:</p>
 <pre><code class="language-sh">$ ghci -XNPlusKPatterns
 Prelude&gt; 
 </code></pre>
