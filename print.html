@@ -1,0 +1,1040 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AtCoder in Haskell</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 始めに</a></li><li class="chapter-item expanded "><a href="books.html"><strong aria-hidden="true">2.</strong> 書籍</a></li><li class="chapter-item expanded "><a href="setup/SUMMARY.html"><strong aria-hidden="true">3.</strong> 環境構築</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup/cli.html"><strong aria-hidden="true">3.1.</strong> CLI ツール</a></li><li class="chapter-item expanded "><a href="setup/project-structure.html"><strong aria-hidden="true">3.2.</strong> ファイル構成</a></li></ol></li><li class="chapter-item expanded "><a href="library/SUMMARY.html"><strong aria-hidden="true">4.</strong> ライブラリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="library/array.html"><strong aria-hidden="true">4.1.</strong> array</a></li><li class="chapter-item expanded "><a href="library/bytestring.html"><strong aria-hidden="true">4.2.</strong> bytestring</a></li><li class="chapter-item expanded "><a href="library/containers.html"><strong aria-hidden="true">4.3.</strong> containers</a></li><li class="chapter-item expanded "><a href="library/vector.html"><strong aria-hidden="true">4.4.</strong> bector</a></li><li class="chapter-item expanded "><a href="library/vector-algorithms.html"><strong aria-hidden="true">4.5.</strong> vector-algorithms</a></li><li class="chapter-item expanded "><a href="library/primitive.html"><strong aria-hidden="true">4.6.</strong> primitive</a></li><li class="chapter-item expanded "><a href="library/text.html"><strong aria-hidden="true">4.7.</strong> text</a></li><li class="chapter-item expanded "><a href="library/transformers.html"><strong aria-hidden="true">4.8.</strong> transformers</a></li></ol></li><li class="chapter-item expanded "><a href="monads/SUMMARY.html"><strong aria-hidden="true">5.</strong> モナド</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monads/io.html"><strong aria-hidden="true">5.1.</strong> IO</a></li><li class="chapter-item expanded "><a href="monads/st.html"><strong aria-hidden="true">5.2.</strong> ST</a></li><li class="chapter-item expanded "><a href="monads/state.html"><strong aria-hidden="true">5.3.</strong> State</a></li></ol></li><li class="chapter-item expanded "><a href="algorithm/SUMMARY.html"><strong aria-hidden="true">6.</strong> アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithm/binary-search.html"><strong aria-hidden="true">6.1.</strong> 2 分探索</a></li><li class="chapter-item expanded "><a href="algorithm/union-find.html"><strong aria-hidden="true">6.2.</strong> Union-Find</a></li><li class="chapter-item expanded "><a href="algorithm/segment-tree.html"><strong aria-hidden="true">6.3.</strong> セグメント木</a></li></ol></li><li class="chapter-item expanded "><a href="misc/SUMMARY.html"><strong aria-hidden="true">7.</strong> その他</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="misc/language-extensions.html"><strong aria-hidden="true">7.1.</strong> 言語拡張について</a></li><li class="chapter-item expanded "><a href="misc/curry.html"><strong aria-hidden="true">7.2.</strong> カリー化について</a></li><li class="chapter-item expanded "><a href="misc/point-free-style.html"><strong aria-hidden="true">7.3.</strong> ポイントフリースタイル</a></li><li class="chapter-item expanded "><a href="misc/memes.html"><strong aria-hidden="true">7.4.</strong> 小ネタ</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AtCoder in Haskell</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="始めに"><a class="header" href="#始めに">始めに</a></h1>
+<p>Haskell で AtCoder に取り組む際のお役立ち情報をノートしていきます。</p>
+<p>1 年後には充実した内容になっている……はず！</p>
+<blockquote>
+<p>内容は誤りを含むと思います 🙇</p>
+<p>特にアルゴリズムの実装は <strong>著しく低クオリティ</strong> かもしれません。お気をつけください。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="書籍"><a class="header" href="#書籍">書籍</a></h1>
+<p>良かった本の感想を述べます。</p>
+<h2 id="すごいhaskellたのしく学ぼう"><a class="header" href="#すごいhaskellたのしく学ぼう"><a href="https://shop.ohmsha.co.jp/shopdetail/000000001926">すごいHaskellたのしく学ぼう！</a></a></h2>
+<p>文法を習得できました。『すごい H 本』は『最も簡単』と言われますが、 <code>Applicative</code> などは十分難しいと思います。じっくりと、あるいは飛ばしながら読みました。</p>
+<blockquote>
+<p>似た位置の入門書としては <a href="https://www.lambdanote.com/products/haskell">プログラミング Haskell 第2版</a> もあります。こちらも好評です。</p>
+</blockquote>
+<p>読後は <a href="https://atcoder.jp/contests/abs">AtCoder Beginners Selection</a> が解けるようになりました。 ABC (AtCoder Beginner Contest) にも参加していきます。</p>
+<h2 id="電子版単体haskellで戦う競技プログラミング-第2版"><a class="header" href="#電子版単体haskellで戦う競技プログラミング-第2版"><a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a></a></h2>
+<p>ABC の B 問題でリストを使うとしばしば <a href="https://atcoder.jp/contests/abc074/glossary?lang=ja">TLE</a> (実行時間超過) します。そこで本書で <code>vector</code> パッケージの使い方を押さえました。正確評価や boxing についても教えてくれて、非常に良かったです。</p>
+<blockquote>
+<p>説明されていない内容としては、 <code>Array</code> の基本や遅延評価を生かした DP などがあります。</p>
+</blockquote>
+<p>著者ブログも良くて、一部リンクすると:</p>
+<ul>
+<li><a href="https://blog.miz-ar.info/2019/09/techbookfest7-announce/">技術書典7に、Haskellで競技プログラミングをやる本を出します</a></li>
+<li><a href="https://blog.miz-ar.info/2016/06/writing-efficient-program-with-haskell/">Haskell で高速なプログラムを書くときに注意すること</a></li>
+<li><a href="https://blog.miz-ar.info/2019/05/atcoder-with-haskell/">HaskellでAtCoderに参戦して水色になった</a></li>
+<li><a href="https://blog.miz-ar.info/2019/07/atcoder-blue/">AtCoderで青色になった</a></li>
+<li><a href="https://blog.miz-ar.info/2019/10/scanl-and-scanr/">Haskellのscan系関数を使いこなす</a></li>
+<li><a href="https://blog.miz-ar.info/2018/01/debugging-haskell-program/">Haskell でのデバッグ手法あれこれ</a></li>
+<li><a href="https://blog.miz-ar.info/2020/08/debugging-with-quickcheck/">QuickCheckで競プロ用Haskellコードをデバッグする</a></li>
+</ul>
+<h2 id="競技プログラミングの鉄則-アルゴリズム力と思考力を高める77の技術"><a class="header" href="#競技プログラミングの鉄則-アルゴリズム力と思考力を高める77の技術"><a href="https://book.mynavi.jp/ec/products/detail/id=131288">競技プログラミングの鉄則 アルゴリズム力と思考力を高める77の技術</a></a></h2>
+<p>難度調整が絶妙な問題集です。手数を増やしつつ問題を解いていきます。つまづいた時は <a href="https://haskell.jp/signin-slack.html">haskell-jp</a> で質問できます。</p>
+<p>余裕があれば、同著者の作成した <a href="https://atcoder.jp/contests/typical90">競プロ典型90問</a> などにも取り組んでみます。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="環境構築"><a class="header" href="#環境構築">環境構築</a></h1>
+<p>最低限、言語サーバが動いてテストケースを実行できる環境がほしいところです。</p>
+<h2 id="atcoder-ブラウザ拡張"><a class="header" href="#atcoder-ブラウザ拡張">AtCoder ブラウザ拡張</a></h2>
+<p>Haskell のハイライトを直したり、問題の難度を視覚化できます。</p>
+<ul>
+<li>
+<p><a href="https://qiita.com/mod_poppo/items/af11f07169fa9bdab844">AtCoderのシンタックスハイライトをマシにするUserScriptを作った</a><br />
+変数名の <code>'</code> 文字が文字列リテラルとして認識される問題を解消できます。</p>
+</li>
+<li>
+<p><a href="https://scrapbox.io/magurofly/AtCoder%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%80%81%E5%85%A5%E3%82%8C%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%A8%E3%81%84%E3%81%84%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AA%E3%81%A9">AtCoderをするとき、入れておくといい拡張機能など</a><br />
+問題・ユーザに推定難度・レートに応じた色が付くスクリプトなどがあります。</p>
+</li>
+</ul>
+<h2 id="haskell-のバージョンについて"><a class="header" href="#haskell-のバージョンについて">Haskell のバージョンについて</a></h2>
+<p><a href="https://atcoder.jp/contests/language-test-202001">Language Test 202001</a> で AtCoder で使われるシステムが確認できます:</p>
+<ul>
+<li>GHC 8.8.3 (HLS 1.5.1)</li>
+<li><a href="https://www.stackage.org/lts-16.11">lts-16.11</a> (<code>repa-3.4.1.4</code> のみ <code>lts-16.11</code> 外のパッケージ)</li>
+</ul>
+<h2 id="haskell-のインストール"><a class="header" href="#haskell-のインストール">Haskell のインストール</a></h2>
+<p>GHC (コンパイラ) と <a href="setup/https//github.com/haskell/haskell-language-server">HLS</a> (言語サーバ) は <a href="https://www.haskell.org/ghcup/">ghcup</a> を使ってインストールします:</p>
+<pre><code class="language-sh">$ ghcup install ghc 8.8.3
+$ ghcup install hls 1.5.1
+</code></pre>
+<blockquote>
+<p>他のパッケージ管理ツールや <code>stack</code> で <code>ghc</code> をインストールすると、 <code>ghcup</code> と干渉するらしいです。 <code>ghcup</code> 以外で入れた Haskell 関係のツールはアンインストールしておくのがおすすめです。</p>
+</blockquote>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://scrapbox.io/dragoon8192-main/AtCoder:Haskell%E3%81%AE%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83%E3%81%AE%E5%86%8D%E7%8F%BE">AtCoder:Haskellの実行環境の再現 - 雑多な感じ</a></li>
+<li><a href="https://scrapbox.io/dragoon8192-main/Haskell_Language_Server">Haskell Language Server - 雑多な感じ</a></li>
+<li><a href="https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html">GHC version support - haskell language server documentation</a></li>
+<li><a href="https://zenn.dev/mod_poppo/articles/haskell-setup-2023">Haskellの環境構築2023</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cli-ツール"><a class="header" href="#cli-ツール">CLI ツール</a></h1>
+<p><code>acc</code> (<code>atcoder-cli</code>) で問題とテストケースの一括ダウンロードができます。またテンプレートを使ったファイル生成・テストケースの実行ができます。</p>
+<ul>
+<li><a href="http://tatamo.81.la/blog/2018/12/07/atcoder-cli-tutorial/">atcoder-cli チュートリアル | わたしログ</a></li>
+<li><a href="https://github.com/online-judge-tools/oj/blob/master/docs/getting-started.ja.md">Getting Started for oj command (日本語)</a></li>
+</ul>
+<h2 id="acc-の使い方"><a class="header" href="#acc-の使い方"><code>acc</code> の使い方</a></h2>
+<p>参考: <a href="https://github.com/toyboot4e/abc-hs">僕の ABC リポジトリ</a></p>
+<h3 id="問題のダウンロード"><a class="header" href="#問題のダウンロード">問題のダウンロード</a></h3>
+<p>TODO</p>
+<h3 id="テストの実行"><a class="header" href="#テストの実行">テストの実行</a></h3>
+<p>TODO</p>
+<h2 id="oj-の使い方"><a class="header" href="#oj-の使い方"><code>oj</code> の使い方</a></h2>
+<h3 id="テストケースを-test-cases-ディレクトリに入れる方法"><a class="header" href="#テストケースを-test-cases-ディレクトリに入れる方法">テストケースを <code>test-cases/</code> ディレクトリに入れる方法</a></h3>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="プロジェクト構成"><a class="header" href="#プロジェクト構成">プロジェクト構成</a></h1>
+<p>HLS が動く Stack プロジェクトを作ります。またすべての <code>Main.hs</code> は stack script です。</p>
+<blockquote>
+<p><strong>『正しい』構成ではない</strong> と思いますが、一応動くので載せておきます。</p>
+</blockquote>
+<h2 id="ファイル構成"><a class="header" href="#ファイル構成">ファイル構成</a></h2>
+<p>僕は以下を使っています:</p>
+<pre><code class="language-sh">abc-hs/
+├── .git/
+├── abc278/
+└── abc279/ # 参加コンテスト毎にディレクトリを作成
+    ├── .projectile      # ※
+    ├── abc279.cabal     # 自動生成
+    ├── hie.yaml         # `gen-hie` で生成
+    ├── package.yaml     # 編集対象
+    ├── stack.yaml       # 編集対象
+    └── stack.yaml.lock  # 自動生成
+</code></pre>
+<blockquote>
+<p>※ Emacs では LSP workspace のルートディレクトリが <code>abc-hs/</code> になったため、仕方なく <code>.projectile</code> ファイルを作って <code>abc279/</code> などがルートディレクトリであると Emacs に伝えています。</p>
+</blockquote>
+<h2 id="プロジェクト毎の-ghc-のバージョン切り替え"><a class="header" href="#プロジェクト毎の-ghc-のバージョン切り替え">プロジェクト毎の GHC のバージョン切り替え</a></h2>
+<p>僕は <code>stack.yaml</code> で <code>system-ghc: true</code> (後述) を設定し、 <a href="https://direnv.net/">direnv</a> で <code>PATH</code> を書き換えて GHC / HLS のバージョンを切り替えています。間に合わせとしては十分なのではないでしょうか……。</p>
+<h2 id="stackyaml"><a class="header" href="#stackyaml"><code>stack.yaml</code></a></h2>
+<p>Stack にはプロジェクト下の <code>.stack-work/</code> に GHC をインストールする機能がありますが、プロジェクトの数だけ GHC がインストールされるのは無駄です。 <code>PATH</code> 中の GHC を使用するように <code>system-ghc: true</code> を設定しています。また AtCoder で使用されるパッケージを利用できるように設定します:</p>
+<pre><code class="language-yaml">system-ghc: true
+resolver: lts-16.11
+packages:
+- .
+extra-deps:
+- repa-3.4.1.4
+</code></pre>
+<blockquote>
+<p>主なパッケージは <a href="https://www.stackage.org/lts-16.11">lts-16.11</a> に含まれますが、 <code>repa-3.4.1.4</code> のみ例外です。</p>
+</blockquote>
+<h2 id="packageyaml"><a class="header" href="#packageyaml"><code>package.yaml</code></a></h2>
+<p>パッケージ、 (HLS で使用される) 警告のレベル、実行ファイルなどを設定します:</p>
+<details>
+<summary><code>package.yaml</code></summary>
+<pre><code class="language-yaml">dependencies:
+   - base &gt;= 4.7 &amp;&amp; &lt; 5
+
+   - QuickCheck
+   - array
+   - attoparsec
+   - bytestring
+   - containers
+   - deepseq
+   - extra
+   - fgl
+   - hashable
+   - heaps
+   - integer-logarithms
+   - lens
+   - massiv
+   - mono-traversable
+   - mtl
+   - mutable-containers
+   - mwc-random
+   - parallel
+   - parsec
+   - primitive
+   - psqueues
+   - random
+   - reflection
+   - repa
+   - template-haskell
+   - text
+   - tf-random
+   - transformers
+   - unboxing-vector
+   - unordered-containers
+   - utility-ht
+   - vector
+   - vector-algorithms
+   - vector-th-unbox
+
+# DRY for package.yaml executables:
+# &lt;https://www.reddit.com/r/haskell/comments/haeqin/dry_for_packageyaml_executables/&gt;
+_exe-defs: &amp;exe-defaults
+  # dependencies:
+  # - abs
+  ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -Wall # all warnings
+  other-modules: []
+
+# REMARK: See `README` for the langauge server support.
+executables:
+  a-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: a
+    main:                Main.hs
+
+  b-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: b
+    main:                Main.hs
+
+  c-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: c
+    main:                Main.hs
+
+  d-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: d
+    main:                Main.hs
+
+  e-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: e
+    main:                Main.hs
+
+  f-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: f
+    main:                Main.hs
+
+  g-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: g
+    main:                Main.hs
+
+  ex-exe:
+    &lt;&lt;: *exe-defaults
+    source-dirs: ex
+    main:                Main.hs
+</code></pre>
+</details>
+<p><code>executables</code> を省くと HLS 動作が不安定になった (動いたり動かなかったりする) ため、書くようにしています。</p>
+<h2 id="hieyaml"><a class="header" href="#hieyaml"><code>hie.yaml</code></a></h2>
+<p><code>package.yaml</code> を書いた後、 <code>gen-hie</code> (<a href="https://github.com/Avi-D-coder/implicit-hie#readme">implicit-hie</a>) を使って <code>hie.yaml</code> を生成します。これが無いと HLS が正常に動きませんでした:</p>
+<pre><code class="language-sh">$ gen-hie &gt; hie.yaml
+</code></pre>
+<details>
+<summary><code>hie.yaml</code></summary>
+<pre><code class="language-yaml">cradle:
+  stack:
+    - path: &quot;./a/Main.hs&quot;
+      component: &quot;abc279:exe:a-exe&quot;
+
+    - path: &quot;./b/Main.hs&quot;
+      component: &quot;abc279:exe:b-exe&quot;
+
+    - path: &quot;./c/Main.hs&quot;
+      component: &quot;abc279:exe:c-exe&quot;
+
+    - path: &quot;./d/Main.hs&quot;
+      component: &quot;abc279:exe:d-exe&quot;
+
+    - path: &quot;./e/Main.hs&quot;
+      component: &quot;abc279:exe:e-exe&quot;
+
+    - path: &quot;./ex/Main.hs&quot;
+      component: &quot;abc279:exe:ex-exe&quot;
+
+    - path: &quot;./f/Main.hs&quot;
+      component: &quot;abc279:exe:f-exe&quot;
+
+    - path: &quot;./g/Main.hs&quot;
+      component: &quot;abc279:exe:g-exe&quot;
+</code></pre>
+<blockquote>
+<p><code>abc279</code> の部分は現在のディレクトリ名になります。</p>
+</blockquote>
+</details>
+<h2 id="haskell-のテンプレート"><a class="header" href="#haskell-のテンプレート">Haskell のテンプレート</a></h2>
+<h3 id="stack-script"><a class="header" href="#stack-script">Stack script</a></h3>
+<p>僕のテンプレートでは以下のようなファイルを使っています:</p>
+<pre><code class="language-hs">#!/usr/bin/env stack
+{- stack script --resolver lts-16.11
+--package array --package bytestring --package containers
+--package vector --package vector-algorithms --package primitive --package transformers
+-}
+
+{- ORMOLU_DISABLE -}
+{-# LANGUAGE BangPatterns, BlockArguments, LambdaCase, MultiWayIf, PatternGuards, TupleSections #-}
+{-# LANGUAGE NumDecimals, NumericUnderscores #-}
+{-# LANGUAGE FlexibleInstances, MultiParamTypeClasses, ScopedTypeVariables, TypeApplications #-}
+{-# LANGUAGE TypeFamilies #-}
+{- ORMOLU_ENABLE -}
+
+-- 関数など
+</code></pre>
+<p><code>Main.hs</code> を <a href="https://zenn.dev/mod_poppo/articles/haskell-script">cabel script / stack script</a> にすると、実行ファイルとして扱うことができます。環境構築が楽な反面、 stack script の実行速度は <code>oj</code> によると 1 秒を超えるため、実行時間の正確な見積もりができなくなるのが欠点です。</p>
+<p><code>stack</code> でビルド・実行する環境を作った方が良いとは思うのですが……</p>
+<h3 id="stack-script-の関数を-repl-から呼ぶ"><a class="header" href="#stack-script-の関数を-repl-から呼ぶ">Stack script の関数を REPL から呼ぶ</a></h3>
+<p>デバッグのため、 <code>Main.hs</code> の関数を REPL から動作確認したい場合があります。</p>
+<p><code>ghci</code> から <code>:load</code> するとコメントが無視されるため、 Stackage のパッケージの <code>import</code> に失敗します。代わりに <code>stack repl &lt;file&gt;</code> で stack script をロードできます:</p>
+<pre><code>$ stack repl a/Main.hs
+Package name not specified, inferred &quot;abc279&quot;
+Using configuration for abc279:exe:a-exe to load /path/to/abc279/a/Main.hs
+Using main module: 1. Package `abc279' component abc279:exe:a-exe with main-is file: /path/to/abc-hs/abc279/a/Main.hs
+Building all executables for `abc279' once. After a successful build of all of them, only specified executables will be rebuilt.
+abc279&gt; initial-build-steps (exe)
+The following GHC options are incompatible with GHCi and have not been passed to it: -threaded
+Configuring GHCi with the following packages: abc279
+GHCi, version 8.8.3: https://www.haskell.org/ghc/  :? for help
+[1 of 1] Compiling Main             ( /path/to/abc-hs/abc279/a/Main.hs, interpreted )
+
+&lt;中略 警告など&gt;
+
+Ok, one module loaded.
+Loaded GHCi configuration from /private/var/folders/w1/gylc7bkj22z1wxrwkdk6jg040000gr/T/haskell-stack-ghci/3a2d78e8/ghci-script
+*Main&gt;
+</code></pre>
+<p>あるいは <code>stack repl</code> とだけ打つと、起動時にロードするファイルを選択できます:</p>
+<pre><code>$ stack repl
+Package name not specified, inferred &quot;abc279&quot;
+
+* * * * * * * *
+The main module to load is ambiguous. Candidates are:
+1. Package `abc279' component abc279:exe:a-exe with main-is file: /path/to/abc-hs/abc279/a/Main.hs
+2. Package `abc279' component abc279:exe:b-exe with main-is file: /path/to/abc-hs/abc279/b/Main.hs
+3. Package `abc279' component abc279:exe:c-exe with main-is file: /path/to/abc-hs/abc279/c/Main.hs
+4. Package `abc279' component abc279:exe:d-exe with main-is file: /path/to/abc-hs/abc279/d/Main.hs
+5. Package `abc279' component abc279:exe:e-exe with main-is file: /path/to/abc-hs/abc279/e/Main.hs
+6. Package `abc279' component abc279:exe:ex-exe with main-is file:/path/tos/abc-hs/abc279/ex/Main.hs
+7. Package `abc279' component abc279:exe:f-exe with main-is file: /path/to/abc-hs/abc279/f/Main.hs
+8. Package `abc279' component abc279:exe:g-exe with main-is file: /path/to/abc-hs/abc279/g/Main.hs
+You can specify which one to pick by:
+ * Specifying targets to stack ghci e.g. stack ghci abc279:exe:a-exe
+ * Specifying what the main is e.g. stack ghci --main-is abc279:exe:a-exe
+ * Choosing from the candidate above [1..8]
+* * * * * * * *
+
+Specify main module to use (press enter to load none): 1
+Loading main module from candidate 1, --main-is /path/to/abc279/a/Main.hs
+
+Building all executables for `abc279' once. After a successful build of all of them, only specified executables will be rebuilt.
+abc279&gt; initial-build-steps (exe)
+The following GHC options are incompatible with GHCi and have not been passed to it: -threaded
+Configuring GHCi with the following packages: abc279
+GHCi, version 8.8.3: https://www.haskell.org/ghc/  :? for help
+[1 of 1] Compiling Main             ( /path/to/abc279/a/Main.hs, interpreted )
+
+&lt;中略 警告など&gt;
+
+Ok, one module loaded.
+Loaded GHCi configuration from /private/var/folders/w1/gylc7bkj22z1wxrwkdk6jg040000gr/T/haskell-stack-ghci/d02d2a00/ghci-script
+*Main&gt;
+</code></pre>
+<blockquote>
+<p>TODO: ファイルの更新があった場合、 <code>:load</code> では <code>--resolver</code> などのコメントの更新に対応できない気がしますが……</p>
+</blockquote>
+<h2 id="参考-1"><a class="header" href="#参考-1">参考</a></h2>
+<ul>
+<li><a href="https://zenn.dev/mod_poppo/articles/haskell-without-project">プロジェクトを作らずにHaskellをやる</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ライブラリ"><a class="header" href="#ライブラリ">ライブラリ</a></h1>
+<p>主なパッケージの立ち位置・使い方などをノートします。</p>
+<h2 id="バージョン"><a class="header" href="#バージョン">バージョン</a></h2>
+<p><a href="https://atcoder.jp/contests/language-test-202001">Language Test 202001</a> で AtCoder で使われるシステムが確認できます。再掲すると:</p>
+<ul>
+<li>GHC 8.8.3 (HLS 1.5.1)</li>
+<li>パッケージのバージョンは <a href="https://www.stackage.org/lts-16.11">lts-16.11</a> (<code>repa-3.4.1.4</code> のみ <code>lts-16.11</code> 外のパッケージ)</li>
+</ul>
+<h2 id="参考-2"><a class="header" href="#参考-2">参考</a></h2>
+<ul>
+<li><a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="array"><a class="header" href="#array">array</a></h1>
+<p><code>Array</code> は主に多次元配列の表現に利用します。</p>
+<h2 id="array-と-vector-の使い分け"><a class="header" href="#array-と-vector-の使い分け"><code>Array</code> と <code>Vector</code> の使い分け</a></h2>
+<p>1 次元配列の場合は <code>Vector</code> を使うことが多いです (API がリッチため) 。 <code>Array</code> には添字アクセス以外の API がほぼありませんが、 <a href="http://zvon.org/other/haskell/Outputarray/accumArray_f.html">accumArray</a> がハマる場合は <code>Array</code> を使うこともあります。</p>
+<p>2 次元配列の場合は <code>Array</code> を使うことが多いです:</p>
+<ul>
+<li>2 次元の可変配列は <code>Array</code> でしか表現できない気がします (?)</li>
+<li>2 次元の不変配列も <code>Array</code> の方が添字アクセスが綺麗になります:
+<ul>
+<li><code>arr ! (y, x)</code></li>
+<li><code>vec VU.! (x + y * w)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="class-ix"><a class="header" href="#class-ix"><code>class Ix</code></a></h2>
+<p><code>array</code> の添字は <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> クラスで抽象されています。 <a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> を知ることで <code>Array</code> の API が理解できるようになります。</p>
+<p><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> は <code>Int</code> や <code>Char</code> などに対して実装されており、また n 次元に拡張されています。</p>
+<h3 id="ix-の使い方-1-次元"><a class="header" href="#ix-の使い方-1-次元"><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> の使い方 (1 次元)</a></h3>
+<p><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> を試してみます。まずは REPL を起動します:</p>
+<pre><code class="language-sh">$ ghci
+Prelude&gt; import Data.Ix
+Prelude Data.Ix&gt;
+</code></pre>
+<p><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> クラスの <code>index</code> 関数は、添字範囲 \([x1, x2]\) に対する相対位置を返します:</p>
+<pre><code class="language-hs">Prelude Data.Ix&gt; index (0, 4) 2
+2
+Prelude Data.Ix&gt; index (2, 6) 2
+0
+</code></pre>
+<h3 id="ix-の使い方-2-次元"><a class="header" href="#ix-の使い方-2-次元"><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> の使い方 (2 次元)</a></h3>
+<p><a href="https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Ix.html">Ix</a> は n 次元に拡張されており、 2 次元の添字も表現できます:</p>
+<pre><code class="language-hs">Prelude Data.Ix&gt; index ((0, 0), (5, 5)) (0, 1)
+1
+Prelude Data.Ix&gt; index ((0, 0), (5, 5)) (1, 0)
+6
+Prelude Data.Ix&gt; index ((0, 0), (5, 5)) (5, 5)
+36
+</code></pre>
+<p>注意すべきなのは、タプルの右端の値が 1 次元目を表すということです。 Row-major な行列の場合は、 <code>Array</code> 生成時のサイズは <code>(h, w)</code> であり、 <code>Array</code> への添字アクセスには <code>(y, x)</code> (すなわち <code>(row, column)</code> ) を使います。</p>
+<h2 id="immutable-array"><a class="header" href="#immutable-array">Immutable array</a></h2>
+<h3 id="accumarray-で生成"><a class="header" href="#accumarray-で生成"><code>accumArray</code> で生成</a></h3>
+<p><a href="http://zvon.org/other/haskell/Outputarray/accumArray_f.html">accumArray</a> は配列への畳み込みです。使い方はリンク先の通り:</p>
+<pre><code class="language-hs">Prelude&gt; import Data.Array
+Prelude Data.Array&gt; accumArray (+) 0 (1, 3) [(1, -1), (2, 1), (2, 2), (3, 5)]
+--                             ~~~ ~  ~~~~    ~~~~
+--                             |   |  |       |
+--                             |   |  |       +--- (添字 1, 添字 1 に対する入力 -1)
+--                             |   |  +--- 添字範囲 = [1, 3]
+--                             |   +--- 初期の蓄積値 = 0
+--                             +--- (\蓄積値 入力 -&gt; 新しい蓄積値)
+array (1,3) [(1,-1),(2,3),(3,5)]
+</code></pre>
+<h2 id="mutable-array"><a class="header" href="#mutable-array">Mutable array</a></h2>
+<h3 id="st-モナドを使った配列操作"><a class="header" href="#st-モナドを使った配列操作">ST モナドを使った配列操作</a></h3>
+<ul>
+<li><a href="https://www.stackage.org/haddock/lts-20.1/array-0.5.4.0/Data-Array-ST.html#t:STUArray">runSTArray</a></li>
+<li><a href="https://www.stackage.org/haddock/lts-20.1/array-0.5.4.0/Data-Array-ST.html#v:runSTUArray">runSTUArray</a></li>
+</ul>
+<p>TODO</p>
+<h3 id="io-モナドを使った配列操作"><a class="header" href="#io-モナドを使った配列操作">IO モナドを使った配列操作</a></h3>
+<p>TODO</p>
+<h3 id="accumarray-からの-thaw-解凍"><a class="header" href="#accumarray-からの-thaw-解凍"><code>accumArray</code> からの <code>thaw</code> (解凍)</a></h3>
+<p>TODO</p>
+<h2 id="注意点"><a class="header" href="#注意点">注意点</a></h2>
+<h3 id="タプルの-array-には-boxed-array-を使わざるを得ない"><a class="header" href="#タプルの-array-には-boxed-array-を使わざるを得ない">タプルの array には boxed array を使わざるを得ない</a></h3>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bytestring"><a class="header" href="#bytestring">bytestring</a></h1>
+<p><code>ByteString</code> および <code>ByteStringBuilder</code> は高速なテキスト処理 (ASCII 限定) に利用します。</p>
+<p>詳しくは <a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a> 第 1 章を参照してください。</p>
+<h2 id="主な-api"><a class="header" href="#主な-api">主な API</a></h2>
+<ul>
+<li>空文字: <code>mzero @ BSB.Builder</code> (だっけ？)</li>
+<li>連結: <code>&lt;&gt;</code>, <code>mconcat</code></li>
+<li>変換: <code>BSB.intDec</code>, <code>BSB.charUtf8</code>, <code>BSB.stringUtf8</code></li>
+<li>出力: <code>hPutBuilder stdout bs</code></li>
+</ul>
+<h2 id="例"><a class="header" href="#例">例</a></h2>
+<p>TODO: fold</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="containers"><a class="header" href="#containers">containers</a></h1>
+<p><code>IntSet</code>, <code>IntMap</code> は順序付けられた木です？　メモリ使用量の削減で重宝します。検索が速い (\(O(log N)\)) のも非常に便利です。</p>
+<h2 id="immutable-データ構造で大丈夫"><a class="header" href="#immutable-データ構造で大丈夫">Immutable データ構造で大丈夫？</a></h2>
+<p>更新に多少の時間 (\(O(log N)\)) が必要ですが、今のところ TLE するほどではありません。</p>
+<p>レーティングが上がると、別の実装に切り替える必要があるかもしれません。</p>
+<h2 id="例-1"><a class="header" href="#例-1">例</a></h2>
+<p>TODO: DFS?</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector"><a class="header" href="#vector">vector</a></h1>
+<p><code>Vector</code> は高効率な配列のパッケージです。 <code>Array</code> と比べて API が豊かなため、基本的には <code>Vector</code> が好まれますが、 2 次元配列の表現には弱いです。使い分けが必要となります。</p>
+<h2 id="主な使い方"><a class="header" href="#主な使い方">主な使い方</a></h2>
+<p>基本的に添字アクセスが \(O(1)\) なリストのように扱えます。パタンマッチができなくて戸惑いますが、大半の操作は高階関数で実現できますし、高階関数を使った方が効率の良いコードになります。リスト内包表記に対応するコードも、高階関数や <code>do</code> 記法で表現できることが多いです。</p>
+<p>詳しくは <a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a> 第 4 章を参照してください。</p>
+<h2 id="ノート"><a class="header" href="#ノート">ノート</a></h2>
+<h3 id="stream-fusion"><a class="header" href="#stream-fusion">Stream fusion</a></h3>
+<p>TODO: リストとのパフォーマンス比較 (差は無い？)</p>
+<h3 id="primmonad-や-inline-関数"><a class="header" href="#primmonad-や-inline-関数"><code>PrimMonad</code> や <code>INLINE</code> 関数</a></h3>
+<p>TODO:</p>
+<h3 id="vector-で-2-次元配列を表現するには"><a class="header" href="#vector-で-2-次元配列を表現するには"><code>Vector</code> で 2 次元配列を表現するには</a></h3>
+<p>不変配列なら <code>V.Vector (VU.Vector a)</code> が使えます。たまーに入力の処理で役立ちます。</p>
+<p>可変配列なら <code>Array</code> を使います。</p>
+<h3 id="タプルに対する実装"><a class="header" href="#タプルに対する実装">タプルに対する実装</a></h3>
+<p>なんと内部実装としては 2 本の配列に切り替わります。</p>
+<p>TODO: Struct of Arrays, データ族？</p>
+<h3 id="resizable-な-mvector"><a class="header" href="#resizable-な-mvector">Resizable な <code>MVector</code></a></h3>
+<p>TODO: 実装例へのリンク？</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector-algorithms"><a class="header" href="#vector-algorithms">vector-algorithms</a></h1>
+<p><code>vector-algorithms</code> は可変配列に対するソートや検索を提供します。</p>
+<p>不変配列に対しても適用できます:</p>
+<ul>
+<li>
+<p><a href="https://www.stackage.org/haddock/lts-16.11/vector-0.12.1.2/Data-Vector-Unboxed.html#v:modify">VU.modify</a><br />
+<code>VU.Vector</code> を一時的に <code>VUM.Vector</code> に変えて操作を適用し、再び <code>VU.Vector</code> に凍結します。</p>
+</li>
+<li>
+<p><a href="https://www.stackage.org/haddock/lts-16.11/vector-0.12.1.2/Data-Vector-Unboxed.html#v:thaw">VU.thaw</a> (解凍)<br />
+<code>VU.Vector</code> を <code>VUM.Vector</code> に変えます。</p>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://www.stackage.org/haddock/lts-16.11/vector-0.12.1.2/Data-Vector-Unboxed.html#v:modify"><code>VU.modify</code></a> は <a href="https://www.stackage.org/haddock/lts-16.11/vector-0.12.1.2/Data-Vector-Unboxed-Mutable.html#v:modify"><code>VUM.modify</code></a> とはまったく別物です。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="primitive"><a class="header" href="#primitive">primitive</a></h1>
+<p><code>primitive</code> パッケージの <code>PrimMonad</code> は、 <code>IO</code> および <code>ST</code> を抽象します。 <code>vector</code> の API ドキュメントを読む時などに役立ちます。</p>
+<p>詳しくは <a href="https://booth.pm/ja/items/1577541">【電子版単体】Haskellで戦う競技プログラミング 第2版</a> 第 4 章を参照してください。</p>
+<h2 id="todo-使用例"><a class="header" href="#todo-使用例">TODO: 使用例</a></h2>
+<p>Union-Find 木を Find 木に固めてしまう？</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="text"><a class="header" href="#text">text</a></h1>
+<p><code>text</code> は Unicode 文字 (?) が扱える文字列のパッケージです。競技プログラミングではあまり使う機会がありません。 <code>bytestring</code> が使えたら十分です。</p>
+<p>なお AtCoder のバージョンでは <code>text</code> の内部実装には UTF-16 が使われていますが、最近の実装では UTF-8 に移行したようです。 AtCoder の外では <code>text</code> の天下……なのかもしれません。</p>
+<h2 id="主な-api-1"><a class="header" href="#主な-api-1">主な API</a></h2>
+<ul>
+<li><code>T.pack</code>, <code>T.unpack</code></li>
+<li><code>T.printf</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformers"><a class="header" href="#transformers">transformers</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="モナド"><a class="header" href="#モナド">モナド</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="io"><a class="header" href="#io">IO</a></h1>
+<h2 id="realworld"><a class="header" href="#realworld">RealWorld</a></h2>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="st"><a class="header" href="#st">ST</a></h1>
+<p>State thread</p>
+<h2 id="runst"><a class="header" href="#runst"><code>runST</code></a></h2>
+<p>TODO</p>
+<h2 id="runst-における制約"><a class="header" href="#runst-における制約"><code>runST</code> における制約</a></h2>
+<p>TODO: forall</p>
+<h2 id="runst-と類似の関数"><a class="header" href="#runst-と類似の関数"><code>runST</code> と類似の関数</a></h2>
+<ul>
+<li><code>VU.create</code></li>
+<li><code>runSTUArray</code></li>
+<li>TODO</li>
+</ul>
+<h2 id="vucreate-と似た関数を自作する"><a class="header" href="#vucreate-と似た関数を自作する"><code>VU.create</code> と似た関数を自作する</a></h2>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="state"><a class="header" href="#state">State</a></h1>
+<h2 id="例-state-モナドで-mapaccuml"><a class="header" href="#例-state-モナドで-mapaccuml">例: <code>State</code> モナドで <code>mapAccumL</code></a></h2>
+<p>累積和の計算には <code>scanl</code>, <code>scanl1</code> を使うと思いますが、 <code>mapAccumL</code> も利用できます。</p>
+<p><code>mapAccumL</code> は状態を持った <code>map</code> 関数です:</p>
+<pre><code class="language-hs">#!/usr/bin/env stack
+
+import Data.List
+
+main :: IO ()
+main = do
+  -- 数列 → 累積和
+  -- [1, 2, 3] -&gt; (6, [1, 3, 6])
+  print $ mapAccumL (\acc x -&gt; (acc + x, acc + x)) (0 :: Int) [1, 2, 3]
+
+  -- 累積和 → 数列もできる (`foldl'` では無理だと思います)
+</code></pre>
+<p>同様の計算は <code>mapM</code> と <code>State</code> モナドにより表現可能です:</p>
+<pre><code class="language-hs">#!/usr/bin/env stack
+
+import Control.Monad.State
+import Data.List
+
+main :: IO ()
+main = do
+  -- 数列 → 累積和
+  -- [1, 2, 3] -&gt; ([1, 3, 6], 6)
+  print $ runState (mapM (\x -&gt; state $ \acc -&gt; (x + acc, x + acc)) [1, 2, 3]) (0 :: Int)
+</code></pre>
+<p><code>mapAccumL</code> は <code>Traversable</code> なデータ型にしか適用できませんが、<code>mapM</code> なら <code>Vector</code> にもあるので適用できます。</p>
+<!-- ```hs -->
+<!--   print $ runState (sequenceA $ map (\x -> state $ \acc -> (x + acc, x + acc)) [1, 2, 3]) (0 :: Int) -->
+<!--   print $ runState (traverse (\x -> state $ \acc -> (x + acc, x + acc)) [1, 2, 3]) (0 :: Int) -->
+<!-- ``` -->
+<h2 id="例-do-記法"><a class="header" href="#例-do-記法">例: <code>do</code> 記法</a></h2>
+<p>TODO: ポイントフリースタイルの恩恵</p>
+<p>TODO: パフォーマンスへの (悪) 影響</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="アルゴリズム"><a class="header" href="#アルゴリズム">アルゴリズム</a></h1>
+<p><a href="https://book.mynavi.jp/ec/products/detail/id=131288">競技プログラミングの鉄則</a> を読んで実装したアルゴリズムをノートしていきます。</p>
+<p><strong>著しく低クオリティ</strong> の可能性が高いのでお気をつけください。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2-分探索"><a class="header" href="#2-分探索">2 分探索</a></h1>
+<p>参考: <a href="https://www.forcia.com/blog/001434.html">AtCoder灰・茶・緑色の方必見！二分探索を絶対にバグらせないで書く方法│FORCIA CUBE│フォルシア株式会社</a></p>
+<p>いわゆる『はねる式 2 分探索』です。</p>
+<h2 id="実装"><a class="header" href="#実装">実装</a></h2>
+<pre><code class="language-hs">-- {{{ Binary search
+
+-- | Binary search for sorted items in an inclusive range (from left to right only)
+-- |
+-- | It returns an `(ok, ng)` index pair at the boundary.
+-- |
+-- | # Example
+-- |
+-- | With an OK predicate `(&lt;= 5)`, list `[0..9]` can be seen as:
+-- |
+-- | &gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+-- | &gt;  &lt;--------------&gt;  &lt;--------&gt;
+-- | &gt;         ok             ng
+-- |
+-- | In this case `bsearch` returns the `(ok, ng)` = `(5, 6)` pair:
+-- |
+-- | &gt; &gt; let xs = [0..9] in do
+-- | &gt; &gt;   print $ bsearch (0, 9) (\i -&gt; xs !! i &lt;= 5)
+-- | &gt; (5, 6)
+bsearch :: (Int, Int) -&gt; (Int -&gt; Bool) -&gt; (Maybe Int, Maybe Int)
+bsearch (low, high) isOk = bimap wrap wrap (loop (low - 1, high + 1) isOk)
+  where
+    loop (ok, ng) isOk
+      | abs (ok - ng) == 1 = (ok, ng)
+      | isOk m = loop (m, ng) isOk
+      | otherwise = loop (ok, m) isOk
+      where
+        m = (ok + ng) `div` 2
+    wrap :: Int -&gt; Maybe Int
+    wrap x
+      | x == low - 1 || x == high + 1 = Nothing
+      | otherwise = Just x
+
+-- }}}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="union-find"><a class="header" href="#union-find">Union-Find</a></h1>
+<p>参考: <a href="https://algo-method.com/descriptions/132">Union-Find とは | アルゴ式</a></p>
+<p>データの相互排他的なデータ分けができます。</p>
+<h2 id="実装-mvector-ベース"><a class="header" href="#実装-mvector-ベース">実装 (<code>MVector</code> ベース)</a></h2>
+<p><code>MVector</code> を使う都合上、添字の範囲が極端に広い場合はメモリ使用量が制限を超えてしまいますが、座標圧縮を使ってメモリ使用量を抑えることができます。</p>
+<blockquote>
+<p>以下のコードでは <code>PrimMonad</code> を使っていますが、実質的には <code>IO</code> でしか利用できません。</p>
+</blockquote>
+<pre><code class="language-hs">-- {{{ Union-Find tree
+
+-- | Union-find implementation (originally by `@pel`)
+newtype UnionFind s = UnionFind (VM.MVector s UfNode)
+
+type IOUnionFind = UnionFind RealWorld
+
+type STUnionFind s = UnionFind s
+
+-- | `Child parent | Root size`. Not `Unbox` :(
+data UfNode = Child {-# UNPACK #-} !Int | Root {-# UNPACK #-} !Int
+
+-- | Creates a new Union-Find tree of the given size.
+{-# INLINE newUF #-}
+newUF :: (PrimMonad m) =&gt; Int -&gt; m (UnionFind (PrimState m))
+newUF n = UnionFind &lt;$&gt; VM.replicate n (Root 1)
+
+-- | Returns the root node index.
+{-# INLINE root #-}
+root :: (PrimMonad m) =&gt; UnionFind (PrimState m) -&gt; Int -&gt; m Int
+root uf@(UnionFind vec) i = do
+  node &lt;- VM.read vec i
+  case node of
+    Root _ -&gt; return i
+    Child p -&gt; do
+      r &lt;- root uf p
+      -- NOTE(perf): path compression (move the queried node to just under the root, recursivelly)
+      VM.write vec i (Child r)
+      return r
+
+-- | Checks if the two nodes are under the same root.
+{-# INLINE same #-}
+same :: (PrimMonad m) =&gt; UnionFind (PrimState m) -&gt; Int -&gt; Int -&gt; m Bool
+same uf x y = liftM2 (==) (root uf x) (root uf y)
+
+-- | Just an internal helper.
+unwrapRoot :: UfNode -&gt; Int
+unwrapRoot (Root s) = s
+unwrapRoot (Child _) = undefined
+
+-- | Unites two nodes.
+{-# INLINE unite #-}
+unite :: (PrimMonad m) =&gt; UnionFind (PrimState m) -&gt; Int -&gt; Int -&gt; m ()
+unite uf@(UnionFind vec) x y = do
+  px &lt;- root uf x
+  py &lt;- root uf y
+  when (px /= py) $ do
+    sx &lt;- unwrapRoot &lt;$&gt; VM.read vec px
+    sy &lt;- unwrapRoot &lt;$&gt; VM.read vec py
+    -- NOTE(perf): union by rank (choose smaller one for root)
+    let (par, chld) = if sx &lt; sy then (px, py) else (py, px)
+    VM.write vec chld (Child par)
+    VM.write vec par (Root (sx + sy))
+
+-- | Returns the size of the root node, starting with `1`.
+{-# INLINE size #-}
+size :: (PrimMonad m) =&gt; UnionFind (PrimState m) -&gt; Int -&gt; m Int
+size uf@(UnionFind vec) x = do
+  px &lt;- root uf x
+  s &lt;- unwrapRoot &lt;$&gt; VM.read vec px
+  return s
+
+-- }}}
+</code></pre>
+<p>TODO: ちゃんと <code>PrimMonad</code> を活かして <code>ST</code> モナドが活きるようにする？</p>
+<h2 id="実装-intmap-ベース"><a class="header" href="#実装-intmap-ベース">実装 (<code>IntMap</code> ベース)</a></h2>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="セグメント木"><a class="header" href="#セグメント木">セグメント木</a></h1>
+<p>参考: <a href="https://book.mynavi.jp/ec/products/detail/id=131288">競技プログラミングの鉄則</a></p>
+<p>セグメント木は畳み込みのキャッシュです。</p>
+<h2 id="実装-1"><a class="header" href="#実装-1">実装</a></h2>
+<p>『鉄則本』では完全 2 分木をバックにした実装が紹介されていました。概要だけ読んで実装しました。</p>
+<h3 id="ヘルパー部分"><a class="header" href="#ヘルパー部分">ヘルパー部分</a></h3>
+<pre><code class="language-hs">-- {{{ Bits
+
+-- | Log base of two or bit floor.
+-- | &lt;https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Bits.html#v:countLeadingZeros&gt;
+log2 :: (FiniteBits b) =&gt; b -&gt; Int
+log2 x = finiteBitSize x - 1 - countLeadingZeros x
+
+-- | Ceiling of log base 2 of an `Int`.
+-- |
+-- | # Example
+-- |
+-- | ```hs
+-- | &gt; log2 3
+-- | 1
+-- | &gt; log2CeilInt 3
+-- | 2
+-- | ```
+log2CeilInt :: Int -&gt; Int
+log2CeilInt x = msb + ceiling
+  where
+    msb = log2 x
+    ceiling = if (clearBit x msb) &gt; 0 then 1 else 0
+
+-- | Calculates the smallest integral power of two that is not smaller than `x`.
+-- |
+-- | # Example
+-- |
+-- | ```hs
+-- | &gt; bitCeil 3
+-- | 4
+-- | ```
+bitCeil :: Int -&gt; Int
+bitCeil = bit . log2CeilInt
+
+-- }}}
+</code></pre>
+<h3 id="本実装"><a class="header" href="#本実装">本実装</a></h3>
+<pre><code class="language-hs">-- {{{ Segment tree
+
+-- | A mutable segment tree backed by a complete binary tree.
+-- |
+-- | # Overview
+-- |
+-- | A segment tree is a cache of a folding function.
+-- | Each node corresponds to a folding range and the node contains the folding result.
+-- |
+-- | A segment tree has a constant size and never be resized.
+-- |
+-- | # Operations
+-- |
+-- | Modification takes $O(log N)$, so creation takes $N(log N)$.
+-- | Lookup takes $O(log N)$.
+-- |
+-- | # (Internal) Indices
+-- |
+-- | The complete binary tree has `2 ^ depth - 1` elements.
+-- |
+-- | - Child elements of a parent node `i` has index `2 * i + 1` and `2 * i + 2`.
+-- | - The leaf indices start with `length / 2 - 1`.
+-- |
+-- | Example:
+-- |
+-- | ```
+-- |            0
+-- |      1           2
+-- |   3     4     5     6
+-- | 07 08 09 10 11 12 13 14
+-- | ```
+data MSegmentTree s a = MSegmentTree (a -&gt; a -&gt; a) (VUM.MVector s a)
+
+-- TODO: Generic queries and immutable segment tree (with `Show` instance)
+
+-- | Creates a new segment tree for `n` leaves.
+{-# INLINE newTree #-}
+newTree :: (VUM.Unbox a, PrimMonad m) =&gt; (a -&gt; a -&gt; a) -&gt; Int -&gt; a -&gt; m (MSegmentTree (PrimState m) a)
+newTree !f !n !value = MSegmentTree f &lt;$&gt; VUM.replicate n' value
+  where
+    !n' = shiftL (bitCeil n) 1
+
+-- | Updates an `MSegmentTree` leaf value and their parents up to top root.
+{-# INLINE updateLeaf #-}
+updateLeaf :: (VU.Unbox a, PrimMonad m) =&gt; MSegmentTree (PrimState m) a -&gt; Int -&gt; a -&gt; m ()
+updateLeaf tree@(MSegmentTree _ vec) !i !value = _updateElement tree i' value
+  where
+    -- length == 2 * (the number of the leaves)
+    !offset = (VUM.length vec) `div` 2 - 1
+    !i' = i + offset
+
+-- | (Internal) Updates an `MSegmentTree` element (node or leaf) value and their parents up to top root.
+{-# INLINE _updateElement #-}
+_updateElement :: (VU.Unbox a, PrimMonad m) =&gt; MSegmentTree (PrimState m) a -&gt; Int -&gt; a -&gt; m ()
+_updateElement tree@(MSegmentTree _ vec) !i !value = do
+  VUM.write vec i value
+  _updateParent tree ((i - 1) `div` 2)
+
+-- | (Internal) Recursivelly updates the parent nodes.
+{-# INLINE _updateParent #-}
+_updateParent :: (VU.Unbox a, PrimMonad m) =&gt; MSegmentTree (PrimState m) a -&gt; Int -&gt; m ()
+_updateParent _ (-1) = pure () -- REMARK: (-1) `div` 2 == -1
+_updateParent _ 0 = pure ()
+_updateParent tree@(MSegmentTree f vec) !iParent = do
+  !c1 &lt;- VUM.read vec (iParent * 2 + 1)
+  !c2 &lt;- VUM.read vec (iParent * 2 + 2)
+  _updateElement tree iParent (f c1 c2)
+
+-- | Retrieves the folding result over the inclusive range `[l, r]` from `MSegmentTree`.
+{-# INLINE queryByRange #-}
+queryByRange :: forall a m. (VU.Unbox a, PrimMonad m) =&gt; MSegmentTree (PrimState m) a -&gt; (Int, Int) -&gt; m a
+queryByRange (MSegmentTree !f !vec) (!lo, !hi) = fromJust &lt;$&gt; loop 0 (0, initialHi)
+  where
+    !initialHi = (VUM.length vec) `div` 2 - 1
+    loop :: Int -&gt; (Int, Int) -&gt; m (Maybe a)
+    loop !i (!l, !h)
+      | lo &lt;= l &amp;&amp; h &lt;= hi = Just &lt;$&gt; VUM.read vec i
+      | h &lt; lo || hi &lt; l = pure Nothing
+      | otherwise = do
+        let d = (h - l) `div` 2
+        !ansL &lt;- loop (2 * i + 1) (l, l + d)
+        !ansH &lt;- loop (2 * i + 2) (l + d + 1, h)
+        pure . Just $ case (ansL, ansH) of
+          (Just !a, Just !b) -&gt; f a b
+          (Just !a, _) -&gt; a
+          (_, Just !b) -&gt; b
+          (_, _) -&gt; error &quot;query error (segment tree)&quot;
+
+-- }}}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="その他"><a class="header" href="#その他">その他</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="言語拡張について"><a class="header" href="#言語拡張について">言語拡張について</a></h1>
+<p>TODO: GHC の言語拡張とは</p>
+<h2 id="書き方"><a class="header" href="#書き方">書き方</a></h2>
+<p>フォーマッタ (<code>ormolu</code>) は言語拡張を 1 行ずつの分けてしまいます:</p>
+<pre><code class="language-hs">{-# LANGUAGE BangPatterns #-}
+{-# BlockArguments #-}
+{-# LambdaCase #-}
+{-# MultiWayIf #-}
+{-# PatternGuards #-}
+{-# TupleSections #-}
+-- ..
+</code></pre>
+<p>そこで言語拡張の宣言をフォーマッタの適用外にして、コード行数を削減できます:</p>
+<pre><code class="language-hs">{- ORMOLU_DISABLE -}
+{-# LANGUAGE BangPatterns, BlockArguments, LambdaCase, MultiWayIf, PatternGuards, TupleSections #-}
+{-# LANGUAGE NumDecimals, NumericUnderscores #-}
+{-# LANGUAGE FlexibleInstances, MultiParamTypeClasses, ScopedTypeVariables, TypeApplications #-}
+{-# LANGUAGE TypeFamilies #-}
+{- ORMOLU_ENABLE -}
+</code></pre>
+<h2 id="おすすめしない言語拡張"><a class="header" href="#おすすめしない言語拡張">おすすめしない言語拡張</a></h2>
+<h3 id="npluskpatterns"><a class="header" href="#npluskpatterns">NPlusKPatterns</a></h3>
+<p>パタンを <code>n + 1</code> のように書ける拡張です。この拡張を有効にして <code>ghci</code> を起動してみます:</p>
+<pre><code class="language-sh">$ ghci -XNPlusKPatterns
+Prelude&gt; 
+</code></pre>
+<p>一見 N + K パタンは問題なく動きます:</p>
+<pre><code class="language-hs">Prelude&gt; let (n + 1) = 1
+Prelude&gt; n
+0
+</code></pre>
+<p>しかし <code>n</code> が負の数になるパタンでは実行時エラーが発生します:</p>
+<pre><code class="language-hs">Prelude&gt; let (n + 1) = 0
+Prelude&gt; n
+*** Exception: &lt;interactive&gt;:3:5-15: Non-exhaustive patterns in n+1
+</code></pre>
+<p>このように罠がある以上、多少冗長でも <code>let</code> や <code>where</code> を書こうと思いました。 <a href="https://sites.google.com/site/haskell/notes/nkpatterns">詳細</a> (未確認)</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="カリー化について"><a class="header" href="#カリー化について">カリー化について</a></h1>
+<p>参考: <a href="https://kazu-yamamoto.hatenablog.jp/entry/20110906/1315279311">カリー化談義 - あどけない話</a></p>
+<h2 id="多変数関数の表現として"><a class="header" href="#多変数関数の表現として">多変数関数の表現として</a></h2>
+<p>TODO: <a href="https://www.fos.kuis.kyoto-u.ac.jp/%7Eigarashi/CoPL/">プログラミング言語の基礎概念</a></p>
+<p>TODO: Applicative における <code>(a -&gt; b)</code> の具体例に <code>(a -&gt; b' -&gt; c)</code> がある。これもカリー化？</p>
+<h2 id="タプルの引数を個別の引数にバラすという意味で"><a class="header" href="#タプルの引数を個別の引数にバラすという意味で">タプルの引数を個別の引数にバラすという意味で</a></h2>
+<p>TODO: <code>curry</code>, <code>uncurry</code></p>
+<h2 id="部分適用について"><a class="header" href="#部分適用について">部分適用について</a></h2>
+<p>TODO: 一般の部分適用は順不同、カリー化された関数の部分適用は 1 方向の順番</p>
+<p>TODO: <code>.</code> 演算子、 <code>$</code> 演算子、ポイントフリースタイルなどと絡めたい</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ポイントフリースタイル"><a class="header" href="#ポイントフリースタイル">ポイントフリースタイル</a></h1>
+<p>ポイントフリースタイルは関数合成に便利です。関数適用の評価順が最も高いというのも関係しています。</p>
+<p>TODO: という趣旨であっている？</p>
+<h2 id="例-2"><a class="header" href="#例-2">例</a></h2>
+<p>TODO:</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="小ネタ"><a class="header" href="#小ネタ">小ネタ</a></h1>
+<h2 id="haskell"><a class="header" href="#haskell">Haskell</a></h2>
+<ul>
+<li><a href="https://twitter.com/search?q=from%3Atanakh%20%E3%83%A2%E3%83%8A%E3%83%89%20%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89&amp;src=typed_query&amp;f=top">モナドの力</a></li>
+<li>Pointless style (point-free style へのジョーク)</li>
+</ul>
+<h2 id="atcoder"><a class="header" href="#atcoder">AtCoder</a></h2>
+<ul>
+<li><a href="https://www.pixiv.net/en/artworks/81829657">全ての黒幕がchokudaiだった話</a></li>
+</ul>
+<!-- - 慶応 -->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+    </body>
+</html>
